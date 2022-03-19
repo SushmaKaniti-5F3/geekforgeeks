@@ -20,7 +20,7 @@ int main()
   {
     long long n;
     cin>>n;
-    Soulution ob;
+    Solution ob;
     cout<<ob.MissingNumber(array,n)<<endl;
   }
   return 0;
