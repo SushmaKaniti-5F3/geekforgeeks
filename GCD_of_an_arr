@@ -1,0 +1,12 @@
+import math
+class Solution:
+    def gcd(self, n, arr):
+        if n==1:
+           return arr[0]
+        else:
+            i=2
+            g1=math.gcd(arr[0],arr[1])
+            while(i<n):
+                g1=math.gcd(g1,arr[i])
+                i+=1
+            return g1
