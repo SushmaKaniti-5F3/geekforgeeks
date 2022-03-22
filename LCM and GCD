@@ -1,0 +1,64 @@
+IN PYTHON:
+          class Solution:
+              def lcmAndGcd(self, A , B):
+                  g=math.gcd(A,B)
+                  l=A*B//g
+                  L=[]
+                  L.append(l)
+                  L.append(g)
+                  return L
+
+
+          #{ 
+          #  Driver Code Starts
+          #Initial Template for Python 3
+
+          import math
+          if __name__ == '__main__': 
+              t = int (input ())
+              for _ in range (t):
+                  A,B=map(int,input().split())
+
+                  ob = Solution()
+                  ptr = ob.lcmAndGcd(A,B)
+
+                  print(ptr[0],ptr[1])
+          # } Driver Code Ends
+
+
+IN CPP:
+          #include <bits/stdc++.h>
+          using namespace std;
+
+           // } Driver Code Ends
+          class Solution {
+            public:
+              vector<long long> lcmAndGcd(long long A , long long B) {
+                  long long int a=A,b=B;
+                  while(A>0 && B>0)
+                  (A>B)?(A=A-B):(B=B-A);
+                  vector<long long int>ans;
+                  long long int g=max(A,B);
+                  long long int l=a*b/g;
+                  ans.push_back(l);
+                  ans.push_back(g);
+                  return ans;
+
+              }
+          };
+
+          // { Driver Code Starts.
+          int main() {
+              int t;
+              cin >> t;
+              while (t--) {
+                  long long A,B;
+
+                  cin>>A>>B;
+
+                  Solution ob;
+                  vector<long long> ans = ob.lcmAndGcd(A,B);
+                  cout<<ans[0]<<" "<<ans[1]<<endl;
+              }
+              return 0;
+          }
