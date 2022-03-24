@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution{
+public:
+    int primeSum(int N){
+        vector<bool>a(N+1,true);
+        int sum=0;
+        a[0]=a[1]=0;
+        for(int i=2;i*i<=N;i++)
+        {
+            if(a[i]==true)
+            {
+                for(int j=i*i;j<=N;j+=i)
+                a[j]=0;
+            }
+        }
+        while(N>0)
+        {
+            int r=N%10;
+            if(a[r])
+            sum=sum+r;
+            N/=10;
+        }
+        return sum;
+    }
+};
+
+// { Driver Code Starts.
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int N;
+        cin>>N;
+        
+        Solution ob;
+        cout<<ob.primeSum(N)<<"\n";
+    }
+    return 0;
+}  // } Driver Code Ends
