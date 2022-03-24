@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+long long int N=10000001;
+vector<bool>primes(10000001,true);
+vector<int>prefix(10000001,0);
+void Gen_seive()
+{
+	primes[0]=primes[1]=false;
+	for(int i=2;i*i<=N;i++)
+	{
+		if(primes[i]==true)
+		{
+			for(int j=i*i;j<=N;j+=i)
+			primes[j]=false;
+		}
+	}
+	prefix[0]=primes[0];
+	for(int i=1;i<=N;i++)
+	prefix[i]=prefix[i-1]+primes[i];
+}
+int main() {
+	Gen_seive();
+	long long int t;
+	cin>>t;
+	while(t--)
+	{
+		long long int n;
+		cin>>n;
+		cout<<prefix[n]<<"\n";
+
+	}
+
+}
