@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Solution {
+  public:
+    vector<int> sixyPrime(int L, int R) {
+        vector<bool>a(R+1,true);
+        vector<int>a1;
+        a[0]=a[1]=false;
+        for(int i=2;i*i<=R;i++)
+        {
+            if(a[i])
+            for(int j=i*i;j<=R;j+=i){
+            a[j]=0;
+            }
+        }
+        for(int i=L;i<=R;i++)
+        {
+            if(i+6<=R and a[i]==1 and a[i+6]==true){
+                a1.push_back(i);
+                a1.push_back(i+6);
+            }
+            
+        }
+        if(a1.size()==0)
+        {
+            a1.push_back(-1);
+            return a1;
+        }
+        else
+        return a1;
+    }
+};
+
+// { Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int L,R;
+        cin >> L >> R;
+        Solution ob;
+        vector<int>ans=ob.sixyPrime(L,R);    
+        for(int i=0;i<ans.size();i++)cout<<ans[i]<<" ";
+        cout<<endl;
+    }
+    return 0;
+}
+  // } Driver Code Ends
