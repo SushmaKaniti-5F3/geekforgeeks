@@ -1,0 +1,63 @@
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+ // } Driver Code Ends
+
+
+class Solution {
+  public:
+    int palPrimes(int n) {
+        vector<bool>primes(n+1,true);
+        int c=0;
+        primes[0]=primes[1]=false;
+        for(int i=2;i*i<=n;i++)
+        {
+            if(primes[i]==1)
+            {
+            for(int j=i*i;j<=n;j+=i)
+            primes[j]=0;
+            }
+        }
+        for(int i=2;i<=n;i++)
+        {
+            if(primes[i]==1 and i<=7)
+            c+=1;
+            else if(primes[i]==1 and i>=11)
+            {
+                
+                int temp=i;
+                int sum=0;
+                while(temp>0)
+                {
+                    int rem=temp%10;
+                    sum=sum*10+rem;
+                    temp=temp/10;
+                }
+                if(i==sum)
+                {
+                   // cout<<i<<" ";
+                c+=1;
+                }
+            }
+            
+        }
+        return c;
+    }
+};
+
+// { Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int n;
+        
+        cin>>n;
+
+        Solution ob;
+        cout << ob.palPrimes(n) << endl;
+    }
+    return 0;
+}  // } Driver Code Ends
