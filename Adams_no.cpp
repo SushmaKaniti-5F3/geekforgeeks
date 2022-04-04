@@ -1,43 +1,57 @@
 #include <bits/stdc++.h>
+
+
 using namespace std;
 
+
+
+
  // } Driver Code Ends
-class Solution {
+
+class Solution{
   public:
-    string checkAdamOrNot(int N) {
-        int son=N*N,sum=0,rem,srn;
-        while(N>0)
+    int Countpair(int arr[], int n, int sum){
+        int sum1=0,count=0;
+        
+        for(int i=0;i<n;i++)
         {
-            int rem=N%10;
-            N=N/10;
-            sum=sum*10+rem;
+            for(int j=i+1;j<n;j++)
+            {
+                sum1=arr[i]+arr[j];
+                if(sum1==sum)
+                {
+                count++;
+                }
+            }
         }
-        srn=sum*sum;
-        sum=0;
-        while(srn>0)
-        {
-            int rem=srn%10;
-            srn=srn/10;
-            sum=sum*10+rem;
-        }
-        if(sum==son)
-        return "YES";
+        if(count>0)
+        return count;
         else
-        return "NO";
+        return -1;
     }
 };
 
 // { Driver Code Starts.
-int main() {
+int main()
+ {
     int t;
-    cin >> t;
-    while (t--) {
-        int N;
+    cin>>t;
+    while(t--)
+    {
         
-        cin>>N;
+        int n;
+        cin>>n;
+        int arr[n+1];
+        
+        for(int i=0;i<n;i++)
+        cin>>arr[i];
 
-        Solution ob;
-        cout << ob.checkAdamOrNot(N) << endl;
+        int sum;
+        cin>>sum;
+        Solution obj;
+        cout << obj.Countpair(arr, n, sum) << endl;
+        
     }
-    return 0;
-}  // } Driver Code Ends
+	return 0;
+}
+  // } Driver Code Ends
