@@ -1,18 +1,33 @@
-class Solution
-{
-    public:
-    //Function to find position of first set bit in the given number.
-    unsigned int getFirstSetBit(int n)
-    {
-        int set_pos=1;
-        if(n==0)
-        return 0;
-        while(n)
+#include <bits/stdc++.h>
+using namespace std;
+
+ // } Driver Code Ends
+class Solution {
+  public:
+    int setBits(int N) {
+        int count=0;
+        while(N)
         {
-            if(n&1>0)return set_pos;
-            set_pos+=1;
-            n=n>>1;
+            if(N&1)
+            count++;
+            N=N>>1;
         }
-        
+        return count;
     }
 };
+
+// { Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int N;
+        cin >> N;
+
+        Solution ob;
+        int cnt = ob.setBits(N);
+        cout << cnt << endl;
+    }
+    return 0;
+}
+  // } Driver Code Ends
