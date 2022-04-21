@@ -1,0 +1,15 @@
+class Solution
+{
+    public:
+    //Function to check if the number is sparse or not.
+    bool isSparse(int n)
+    {
+        while(n)
+        {
+            if((n&1) and (n&2))
+            return 0;
+            n=n>>1;
+        }
+        return 1;
+    }
+};
