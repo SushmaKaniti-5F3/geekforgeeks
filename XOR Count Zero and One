@@ -1,0 +1,17 @@
+class Solution
+{
+public:
+	int find_xor(int n)
+	{
+	    int s=0,u=0;
+	    while(n)
+	    {
+	        if(n&1)
+	        s++;
+	        else
+	        u++;
+	        n=n>>1;
+	    }
+	    return s^u;
+	}
+};
