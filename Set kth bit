@@ -1,0 +1,11 @@
+class Solution
+{
+public:
+    int setKthBit(int N, int K)
+    {
+            if((N&(1<<K))==0)
+                N=N+pow(2,K);
+            return N;
+    }
+    
+};
