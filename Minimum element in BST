@@ -1,0 +1,15 @@
+void pre(Node* root,vector<int> &ans)
+{
+     if(root==NULL)
+      return ;
+      ans.push_back(root->data);
+      pre(root->left,ans);
+      pre(root->right,ans);   
+}
+int minValue(Node *root) {
+      if(root==NULL)return -1;
+      vector<int>ans;
+      pre(root,ans);
+      int m=*min_element(ans.begin(),ans.end());
+      return m;
+}
