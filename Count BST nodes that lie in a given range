@@ -1,0 +1,22 @@
+void preorder(Node *root,vector<int> &v)
+{
+    if(root==NULL)
+        return;
+    v.push_back(root->data);
+    preorder(root->left,v);
+    preorder(root->right,v);
+}
+int getCount(Node *root, int l, int h)
+{
+    if(root==NULL)return 0;
+    vector<int>v;
+    preorder(root,v);
+    int n=v.size(),count=0;
+    for(int i=0;i<n;i++)
+    {
+        //cout<<v[i]<<" ";
+        if(v[i]>=l && v[i]<=h)
+        count++;
+    }
+    return count;
+}
