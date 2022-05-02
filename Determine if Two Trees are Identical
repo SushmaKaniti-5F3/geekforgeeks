@@ -1,0 +1,74 @@
+USING ONE FUNCTION:
+-------------------
+void preorder(Node* root,vector<int>&v)
+{
+    if(root==NULL)return;
+    v.push_back(root->data);
+    preorder(root->left,v);
+    preorder(root->right,v);
+}
+class Solution
+{
+    public:
+    //Function to check if two trees are identical.
+
+    bool isIdentical(Node *r1, Node *r2)
+    {
+        vector<int>v1;
+        vector<int>v2;
+        preorder(r1,v1);
+        preorder(r2,v2);
+        int n=v1.size();
+        int m=v2.size();
+        if(n!=m)return false;
+        else
+        {
+            for(int i=0;i<n;i++)
+            {
+                if(v1[i]!=v2[i])return false;
+            }
+            return true;
+        }
+    }
+};
+
+
+
+USING TWO FUNCTIONS:
+---------------------
+class Solution
+{
+    public:
+    //Function to check if two trees are identical.
+    void preorder1(Node* root,vector<int> &v1)
+    {
+        if(root==NULL)
+        return;
+        v1.push_back(root->data);
+        preorder1(root->left,v1);
+        preorder1(root->right,v1);
+    }
+    void preorder2(Node* root,vector<int> &v2)
+    {
+        if(root==NULL)
+        return;
+        v2.push_back(root->data);
+        preorder2(root->left,v2);
+        preorder2(root->right,v2);
+    }
+    bool isIdentical(Node *r1, Node *r2)
+    {
+        vector<int>v1;
+        vector<int>v2;
+        preorder1(r1,v1);
+        preorder2(r2,v2);
+        int n1=v1.size();
+        int n2=v2.size();
+        if(n1!=n2) return 0;
+        for(int i=0;i<n1;i++)
+        {
+            if(v1[i]!=v2[i])return 0;
+        }
+        return 1;
+    }
+};
