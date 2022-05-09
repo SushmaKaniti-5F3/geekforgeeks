@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int t,n,k;
+	cin>>t;
+	while(t--)
+	{
+	    int f=0;
+	    cin>>n>>k;
+	    int a[n];
+	    map<int,int>mp;
+	    for(int i=0;i<n;i++)
+	    {
+	        cin>>a[i];
+	        mp[a[i]]++;
+	    }
+	    for(auto i:mp)
+	    {
+	        if(i.second>k)
+	        {
+	        cout<<i.first<<" ";
+	        f=1;
+	        }
+	    }
+	    if(f!=1)cout<<-1;
+	    cout<<endl;
+	}
+	return 0;
+}
+
+Example:
+Input:
+3
+3 1
+5 5 6
+6 1
+2 2 3 3 4 4
+4 2
+1 2 2 3
+
+Output:
+5
+2 3 4
+-1
+
+Explanation:
+Test case 1: The only problem with hardness 5 appears more than once.
