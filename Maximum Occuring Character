@@ -1,0 +1,32 @@
+class Solution
+{
+    public:
+    //Function to find the maximum occurring character in a string.
+    char getMaxOccuringChar(string str)
+    {
+        int n=str.size();
+        map<char,int>mp;
+        for(int i=0;i<n;i++)
+        mp[str[i]]++;
+        int ans=0;
+        char c;
+        for(auto it:mp)
+        {
+            if(ans<it.second)
+            {
+                ans=it.second;
+                c=it.first;
+            }
+        }
+        return c;
+    }
+
+};
+
+Example 1:
+------------
+Input:
+str = testsample
+Output: e
+Explanation: e is the character which
+is having the highest frequency.
